@@ -25,6 +25,12 @@ This creates:
 * client+service account+client id & secret in keycloak for customer-1 who will access their box.
 * token introspector and access policies within boxes
 
+Keycloak administration interface is available on http://keycloak.localhost:8081/auth
+
+Multibox administration interface is available on http://multibox.localhost:8080
+
+Username and password are both 'admin'
+
 Run the repro script
 ```bash
 cd stack

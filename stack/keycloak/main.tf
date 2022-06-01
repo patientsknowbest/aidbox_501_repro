@@ -1,8 +1,8 @@
 locals {
-  container_name     = "keycloak"
+  container_name     = "keycloak.localhost"
   keycloak_username  = "admin"
   keycloak_password  = "admin"
-  keycloak_port      = 8080
+  keycloak_port      = 8081
   keycloak_host_port = 8081
 }
 
@@ -14,6 +14,7 @@ resource "docker_container" "keycloak" {
   }
   command = [
     "start-dev",
+    "--http-port=${local.keycloak_port}",
     "--http-relative-path=/auth"
   ]
   ports {
