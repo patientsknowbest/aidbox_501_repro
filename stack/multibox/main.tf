@@ -33,7 +33,9 @@ resource "docker_container" "multibox_db" {
 // Multibox, multi-tenant FHIR server
 resource "docker_container" "multibox" {
   # Version pinned 2022-05-29 tag healthsamurai/multibox:2202-lts
-  image = "healthsamurai/multibox@sha256:b621a02f9eb6820b59dd19d43e8b61952f82eba30f2b14166e1789982e9e14fe"
+  #image = "healthsamurai/multibox@sha256:b621a02f9eb6820b59dd19d43e8b61952f82eba30f2b14166e1789982e9e14fe"
+  # Version pinned 2022-06-18 :edge
+  image = "healthsamurai/multibox@sha256:7bf72b7665e07d3dcf1370bf16cd1e495d98441bc67f81cf46fdb4d30c84576e"
   name  = local.container_name
   networks_advanced {
     name    = var.network_name
