@@ -32,4 +32,8 @@ resource "docker_container" "nginx" {
     external = local.host_port
     ip       = "127.0.0.1"
   }
+  labels {
+    label = "io.pkb.e2e"
+    value = "true"
+  }
 }
