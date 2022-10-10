@@ -11,10 +11,6 @@ variable "multibox_admin_client_secret" {
   description = "Client secret for accessing multibox API"
   type = string
 }
-variable "multibox_container_name" {
-  description = "Name of multibox docker container"
-  type = string
-}
 
 # Expected from keycloak variables.
 variable "keycloak_url_external" {

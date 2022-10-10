@@ -5,10 +5,16 @@ include "root" {
 dependency "multibox" {
   config_path  = "../multibox"
   mock_outputs = {
-    multibox_url_external        = "mock_multibox_url_external"
+    
     multibox_admin_client_id     = "mock_multibox_admin_client_id"
     multibox_admin_client_secret = "mock_multibox_admin_client_secret"
-    multibox_container_name      = "mock_multibox_container_name"
+  }
+}
+
+dependency "multibox_lb" {
+  config_path = "../multibox_lb"
+  mock_outputs = {
+    multibox_url_external        = "mock_multibox_url_external"
   }
 }
 
@@ -31,10 +37,10 @@ dependency "keycloak" {
 }
 
 inputs = {
-  multibox_url_external        = dependency.multibox.outputs.multibox_url_external
   multibox_admin_client_id     = dependency.multibox.outputs.multibox_admin_client_id
   multibox_admin_client_secret = dependency.multibox.outputs.multibox_admin_client_secret
-  multibox_container_name      = dependency.multibox.outputs.multibox_container_name
+
+  multibox_url_external        = dependency.multibox_lb.outputs.multibox_url_external
 
   keycloak_jwks_uri     = dependency.keycloak_config.outputs.keycloak_jwks_uri
   keycloak_jwt_issuer   = dependency.keycloak_config.outputs.keycloak_jwt_issuer

@@ -3,7 +3,7 @@ terraform {
   required_providers {
     aidbox = {
       source  = "patientsknowbest/aidbox"
-      version = "0.7.3"
+      version = "0.10.0"
     }
     keycloak = {
       source  = "mrparkers/keycloak"

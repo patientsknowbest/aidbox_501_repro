@@ -2,7 +2,7 @@ provider "aidbox" {
   client_id     = var.multibox_admin_client_id
   client_secret = var.multibox_admin_client_secret
   url           = var.multibox_url_external
-  is_multibox = true
+  is_multibox   = true
 }
 
 provider "keycloak" {
