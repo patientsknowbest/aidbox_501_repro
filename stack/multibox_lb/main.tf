@@ -8,6 +8,13 @@ resource "docker_container" "nginx" {
   image = "nginx"
   networks_advanced {
     name    = var.network_name
+    aliases = [
+      // Workaround, while docker network doesn't support wildcard aliases.
+      // https://github.com/moby/moby/pull/43444
+      "customer1.multibox",
+      "phrmigrated.multibox",
+      "aggregate.multibox",
+    ]
   }
   mounts {
     target = "/etc/nginx/nginx.conf"

@@ -12,7 +12,7 @@ locals {
       "host_port" = 8084
     }
   }
-  domain_name     =     "multibox.localhost"
+  domain_name     =     "multibox"
 }
 
 resource "docker_container" "multibox_db" {
@@ -46,13 +46,6 @@ resource "docker_container" "multibox" {
   name  = each.key
   networks_advanced {
     name    = var.network_name
-    aliases = [
-      // Workaround, while docker network doesn't support wildcard aliases.
-      // https://github.com/moby/moby/pull/43444
-      "customer1.${local.domain_name}",
-      "phrmigrated.${local.domain_name}",
-      "aggregate.${local.domain_name}",
-    ]
   }
 
   env = [
@@ -67,8 +60,7 @@ resource "docker_container" "multibox" {
     "PGDATABASE=postgres",
     "PGUSER=postgres",
     "PGPASSWORD=postgres",
-    "JAVA_OPTS=-Xms64m -Xmx256M",
-    "AIDBOX_DEV_MODE=1"
+    "AIDBOX_STDOUT_JSON=info"
   ]
 
   ports {

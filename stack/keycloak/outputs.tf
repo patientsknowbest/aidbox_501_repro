@@ -1,5 +1,5 @@
 output "keycloak_url" {
-  value = "http://${docker_container.keycloak.name}:${local.keycloak_port}"
+  value = "http://${local.keycloak_internal_name}:${local.keycloak_port}"
 }
 # External URL is for the test-runner to access the application from outside the docker network
 output "keycloak_url_external" {

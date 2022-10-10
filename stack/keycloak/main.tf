@@ -4,6 +4,7 @@ locals {
   keycloak_password  = "admin"
   keycloak_port      = 8081
   keycloak_host_port = 8081
+  keycloak_internal_name = "keycloak"
 }
 
 resource "docker_container" "keycloak" {
@@ -11,6 +12,7 @@ resource "docker_container" "keycloak" {
   name    = local.container_name
   networks_advanced {
     name = var.network_name
+    aliases = [local.keycloak_internal_name]
   }
   command = [
     "start-dev",
