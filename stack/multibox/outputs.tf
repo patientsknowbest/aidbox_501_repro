@@ -1,6 +1,9 @@
 output "multibox_container_port" {
   value = local.port
 }
+output "multibox_container_metrics_port" {
+  value = local.metrics_port
+}
 output "multibox_container_names" {
   value = [for k, v in local.containers : k]
 }

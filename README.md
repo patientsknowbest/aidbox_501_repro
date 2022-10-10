@@ -26,10 +26,13 @@ This creates:
 * client+service account+client id & secret in keycloak for customer-1 who will access their box.
 * token introspector and access policies within boxes
 * locust load tester
+* prometheus metrics scraper
 
 Locust web UI is available on: http://localhost:8089/ and host parameter & env vars are pre-set to access the 'aggregate' box in aidbox.
 
 locustfile.py contains 2 tasks to put and get /fhir/Appointment resources. Press 'Start swarming' to load test.
+
+Prometheus web UI is available on http://localhost:9090/ and is collecting metrics from the 2 multibox instances.
 
 Note you can tear down the containers with the stop script
 ```bash

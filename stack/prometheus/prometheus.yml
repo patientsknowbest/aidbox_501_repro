@@ -1,0 +1,17 @@
+global:
+  external_labels:
+    monitor: 'aidbox'
+scrape_configs:
+  
+  - job_name: multibox-1
+    scrape_interval: 5s
+    metrics_path: /metrics
+    static_configs:
+      - targets: [ 'multibox-1:8888' ]
+  
+  - job_name: multibox-2
+    scrape_interval: 5s
+    metrics_path: /metrics
+    static_configs:
+      - targets: [ 'multibox-2:8888' ]
+  

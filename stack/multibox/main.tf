@@ -1,5 +1,6 @@
 locals {
   port = 8080
+  metrics_port = 8888
   db_port           = 5432
   db_host_port      = 5437
   admin_user_id     = "admin"
@@ -60,7 +61,8 @@ resource "docker_container" "multibox" {
     "PGDATABASE=postgres",
     "PGUSER=postgres",
     "PGPASSWORD=postgres",
-    "AIDBOX_STDOUT_JSON=info"
+    "AIDBOX_STDOUT_JSON=info",
+    "BOX_METRICS_PORT=${local.metrics_port}"
   ]
 
   ports {
