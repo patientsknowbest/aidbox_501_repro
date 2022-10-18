@@ -1,6 +1,8 @@
 # Aidbox issue 501 repro
 
-This repository contains a reproduction of this issue: https://github.com/Aidbox/Issues/issues/501
+This repository started out as reproduction of this issue: https://github.com/Aidbox/Issues/issues/501
+
+It's now a 'production like' environment to reproduce issues observed in aidbox.
 
 ## prerequisites
 * linux
