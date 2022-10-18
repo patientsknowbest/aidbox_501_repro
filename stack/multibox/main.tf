@@ -43,7 +43,8 @@ resource "docker_container" "multibox" {
   # Run two instances, we'll load balance them.
   for_each = local.containers
   # Version pinned 2022-09-14 tag healthsamurai/multibox:edge
-  image = "healthsamurai/multibox@sha256:d00756de29731b609e5df70efcd07f03b3da5158152b11bb2fc37c85a56fb00e"
+  #image = "healthsamurai/multibox@sha256:d00756de29731b609e5df70efcd07f03b3da5158152b11bb2fc37c85a56fb00e"
+  image = "healthsamurai/multibox@sha256:a621c50812578434d0d3af29733da9687ac053699c3a770bfad9b81e993dcc87"
   name  = each.key
   networks_advanced {
     name    = var.network_name
@@ -62,7 +63,8 @@ resource "docker_container" "multibox" {
     "PGUSER=postgres",
     "PGPASSWORD=postgres",
     "AIDBOX_STDOUT_JSON=info",
-    "BOX_METRICS_PORT=${local.metrics_port}"
+    "BOX_METRICS_PORT=${local.metrics_port}",
+    "LOGS_FILTER=select(.ev == \"w/resp\")"
   ]
 
   ports {
