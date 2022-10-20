@@ -76,7 +76,7 @@ resource "docker_container" "multibox" {
   memory = 2048
 
   provisioner "local-exec" {
-    command = "timeout 1200 sh -c 'until curl -f http://localhost:${each.value.host_port}; do sleep 1; done'"
+    command = "timeout 1200 sh -c 'until curl -f http://localhost:${each.value.host_port}/health; do sleep 1; done'"
   }
   labels {
     label = "io.pkb.e2e"
